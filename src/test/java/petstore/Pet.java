@@ -7,6 +7,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 import static io.restassured.RestAssured.given;
+import static org.hamcrest.CoreMatchers.is;
 
 public class Pet {
 
@@ -26,7 +27,9 @@ public class Pet {
         when()
                 .post(uri).
         then()
-                .log().all().statusCode(200);
+                .log().all().statusCode(200)
+                .body("name", is("Cerberus"))
+                .body("status", is("available"));
 
     }
 
