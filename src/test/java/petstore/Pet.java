@@ -73,6 +73,25 @@ public class Pet {
                 .body("status", is("sold"))
 
         ;
+    }
+
+    public void excluirPet() {
+        String petid = "31101969";
+
+        given()
+                .contentType("application/Json").
+
+        when()
+                .delete(uri + "/" + petid).
+
+        then()
+                .log().all().statusCode(200)
+                .body("code", is(200))
+                .body("type", is("unknown"))
+                .body("message", is("3110196"))
+
+        ;
+
 
     }
 
